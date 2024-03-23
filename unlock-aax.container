@@ -11,7 +11,8 @@ Volume=${UAAX_AUDIOBOOKS_PATH}:/unlock_aax/production:z,rw,rslave,rbind
 AutoUpdate=registry
 
 [Service]
-Restart=no
+Restart=always
+RestartSec=3600
 
 [Install]
 WantedBy=default.target
