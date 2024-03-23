@@ -1,0 +1,17 @@
+[Unit]
+Description=Container service for removing DRM from Audible audiobooks
+
+[Container]
+ContainerName=%p
+Image=ghcr.io/cubt85iz/%p:latest
+EnvironmentFile=/etc/containers/config/%p.env
+Volume=${UAAX_CONFIG_PATH}:/unlock_aax/config:Z
+Volume=${UAAX_STAGING_PATH}:/unlock_aax/staging:z,rw,rslave,rbind
+Volume=${UAAX_AUDIOBOOKS_PATH}:/unlock_aax/production:z,rw,rslave,rbind
+AutoUpdate=registry
+
+[Service]
+Restart=no
+
+[Install]
+WantedBy=default.target
